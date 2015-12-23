@@ -1,0 +1,5 @@
+[user]
+	name = Robert Grimm
+	email = rgrimm@werner.com
+[credential]
+	helper = osxkeychain
