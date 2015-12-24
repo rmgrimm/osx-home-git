@@ -32,3 +32,6 @@ fi
 
 # Add a few helpful aliases
 alias ll="ls -alF"
+
+# Add path
+[ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
