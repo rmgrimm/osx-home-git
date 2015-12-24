@@ -30,6 +30,10 @@ else
     PS1=$PS1$PS1PathShort'\$ '
 fi
 
+# Clean up prompt elements
+unset PS1Time PS1PathShort PS1User PS1NewLine
+unset PS1Color_Off PS1IBlack PS1Cyan PS1Yellow
+
 # Add a few helpful aliases
 alias ll="ls -alF"
 

@@ -1,7 +1,10 @@
 #!/bin/bash
 
-if [ -n "$MVN_HOME" -a -x "$MVN_HOME/bin/mvn" ]; then
-    exec "$MVN_HOME/bin/mvn" "$@"
+# Fix JAVA_HOME
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+if [ -n "$M2_HOME" -a -x "$M2_HOME/bin/mvn" ]; then
+    exec "$M2_HOME/bin/mvn" "$@"
 fi
 
 mkdir -p "$HOME/.local/maven"
@@ -9,8 +12,8 @@ mkdir -p "$HOME/.local/maven"
 LATEST_MVN="$(/usr/bin/find "$HOME/.local/maven" -maxdepth 1 -mindepth 1 -type d -iname apache-maven-\* | /usr/bin/sort -r | /usr/bin/head -n 1)"
 
 if [ -n "$LATEST_MVN" -a -x "$LATEST_MVN/bin/mvn" ]; then
-    export MVN_HOME="$LATEST_MVN"
-    exec "$MVN_HOME/bin/mvn" "$@"
+    export M2_HOME="$LATEST_MVN"
+    exec "$M2_HOME/bin/mvn" "$@"
 fi
 
 echo "No maven installed in $HOME/.local/maven"
