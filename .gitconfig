@@ -3,3 +3,5 @@
 	email = rgrimm@werner.com
 [credential]
 	helper = osxkeychain
+[push]
+	default = simple
