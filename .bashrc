@@ -35,7 +35,10 @@ unset PS1Time PS1PathShort PS1User PS1NewLine
 unset PS1Color_Off PS1IBlack PS1Cyan PS1Yellow
 
 # Add a few helpful aliases
-alias ll="ls -alF"
+alias ll="ls -alF --color"
+alias ls="ls --color"
+alias l="ls -F --color"
+alias xcsvn="$(xcode-select -p)/usr/bin/svn"
 
 # Add path
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
