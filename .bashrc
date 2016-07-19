@@ -39,5 +39,16 @@ alias ll="ls -alF"
 alias l="ls -F"
 alias xcsvn="$(xcode-select -p)/usr/bin/svn"
 
-# Add path
+# Use latest version of Java
+JAVA_TEST=$(/usr/libexec/java_home -verbose 2>&1 | head -n 2 | tail -n 1 | cut -f 3)
+if [ -x "$JAVA_TEST/bin/java" ]; then
+    export JAVA_HOME=$JAVA_TEST
+    export PATH="$JAVA_TEST/bin:$PATH"
+fi
+
+# Add user local bin path
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
+
+# Add homebrew paths, if installed
+[ -d "$HOME/.local/brew/bin" ] && export PATH="$HOME/.local/brew/bin:$PATH"
+[ -d "$HOME/.local/brew/sbin" ] && export PATH="$HOME/.local/brew/sbin:$PATH"
