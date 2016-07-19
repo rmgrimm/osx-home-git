@@ -1,7 +1,9 @@
 #!/bin/bash
 
-# Fix JAVA_HOME
-export JAVA_HOME=$(/usr/libexec/java_home)
+# Set JAVA_HOME if not set
+if [ -z "$JAVA_HOME" ]; then
+    export JAVA_HOME=$(/usr/libexec/java_home)
+fi
 
 if [ -n "$M2_HOME" -a -x "$M2_HOME/bin/mvn" ]; then
     exec "$M2_HOME/bin/mvn" "$@"
