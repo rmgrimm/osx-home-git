@@ -46,9 +46,11 @@ if [ -x "$JAVA_TEST/bin/java" ]; then
     export PATH="$JAVA_TEST/bin:$PATH"
 fi
 
+# Add homebrew paths, if installed
+[ -d "$HOME/.brew/bin" ] && export PATH="$HOME/.brew/bin:$PATH"
+[ -d "$HOME/.local/brew/bin" ] && export PATH="$HOME/.local/brew/bin:$PATH"
+[ -d "$HOME/.brew/sbin" ] && export PATH="$HOME/.brew/sbin:$PATH"
+[ -d "$HOME/.local/brew/sbin" ] && export PATH="$HOME/.local/brew/sbin:$PATH"
+
 # Add user local bin path
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
-
-# Add homebrew paths, if installed
-[ -d "$HOME/.local/brew/bin" ] && export PATH="$HOME/.local/brew/bin:$PATH"
-[ -d "$HOME/.local/brew/sbin" ] && export PATH="$HOME/.local/brew/sbin:$PATH"

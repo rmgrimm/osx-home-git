@@ -9,14 +9,16 @@ if [ -n "$M2_HOME" -a -x "$M2_HOME/bin/mvn" ]; then
     exec "$M2_HOME/bin/mvn" "$@"
 fi
 
-mkdir -p "$HOME/.local/maven"
+MVN_BASE_DIR="$HOME/.local/share/maven"
 
-LATEST_MVN="$(/usr/bin/find "$HOME/.local/maven" -maxdepth 1 -mindepth 1 -type d -iname apache-maven-\* | /usr/bin/sort -r | /usr/bin/head -n 1)"
+mkdir -p "$MVN_BASE_DIR"
+
+LATEST_MVN="$(/usr/bin/find "$MVN_BASE_DIR" -maxdepth 1 -mindepth 1 -type d -iname apache-maven-\* | /usr/bin/sort -r | /usr/bin/head -n 1)"
 
 if [ -n "$LATEST_MVN" -a -x "$LATEST_MVN/bin/mvn" ]; then
     export M2_HOME="$LATEST_MVN"
     exec "$M2_HOME/bin/mvn" "$@"
 fi
 
-echo "No maven installed in $HOME/.local/maven"
+echo "No maven installed in $MVN_BASE_DIR"
 exit 1
