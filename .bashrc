@@ -51,6 +51,12 @@ fi
 [ -d "$HOME/.local/brew/bin" ] && export PATH="$HOME/.local/brew/bin:$PATH"
 [ -d "$HOME/.brew/sbin" ] && export PATH="$HOME/.brew/sbin:$PATH"
 [ -d "$HOME/.local/brew/sbin" ] && export PATH="$HOME/.local/brew/sbin:$PATH"
+[ -d "$HOME/.brew/opt/python/libexec/bin" ] && export PATH="$HOME/.brew/opt/python/libexec/bin:$PATH"
+[ -d "$HOME/.local/brew/opt/python/libexec/bin" ] && export PATH="$HOME/.local/brew/opt/python/libexec/bin:$PATH"
+
+# Add homebrew bash completion
+[ -r "$HOME/.brew/etc/profile.d/bash_completion.sh" ] && . "$HOME/.brew/etc/profile.d/bash_completion.sh"
+[ -r "$HOME/.local/brew/etc/profile.d/bash_completion.sh" ] && . "$HOME/.local/brew/etc/profile.d/bash_completion.sh"
 
 # Add user local bin path
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
